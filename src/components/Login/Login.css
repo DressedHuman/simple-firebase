@@ -1,7 +1,5 @@
 .button {
     color: white;
-    background-color: green;
-    border: 1px solid green;
     border-radius: 8px;
     display: inline-flex;
     justify-content: center;
@@ -13,10 +11,20 @@
     cursor: pointer;
     transition: all;
     transition-duration: 175ms;
-    transition-timing-function: cubic-bezier(0,0,.2,1);
+    transition-timing-function: cubic-bezier(0, 0, .2, 1);
     height: 3rem;
     min-height: 3rem;
     text-transform: capitalize;
+}
+
+.button.login {
+    background-color: green;
+    border: 1px solid green;
+}
+
+.button.logout {
+    background-color: #80000075;
+    border: 1px solid #80000075;
 }
 
 .button:hover {

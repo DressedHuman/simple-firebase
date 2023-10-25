@@ -1,45 +1,28 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth'
+import { useContext, useEffect } from 'react';
 import './Login.css'
-import { app } from '../../firebase/firebase.init';
-import { useState } from 'react';
+import { userStateContext } from '../../layout/Main';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
+    const { user, handleSignIn, providerGoogle, providerGitHub } = useContext(userStateContext);
+    const navigate = useNavigate();
 
-    const [user, setUser] = useState(null);
-
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, provider)
-            .then(result => {
-                const loggedUser = result.user;
-                setUser(loggedUser);
-            })
-            .catch(error => {
-                console.log("Error: ", error.message);
-            })
-    }
-
-
-    const handleGoogleSignOut = () => {
-        signOut(auth)
-        .then(() =>{
-            setUser(null);
-        })
-        .catch(error=> console.log("Error : ", error.message))
-    }
+    useEffect(()=>{
+        if(user){
+            navigate('/');
+        }
+    },[user, navigate])
 
 
     return (
         <div>
             {
-                user ? <div>
-                    <img src={user.photoURL} alt="" />
-                    <h2>Welcome, {user.displayName}</h2>
-                    <p>Email: <i><small>{user.email}</small></i></p>
-                    <br />
-                    <button className="button" onClick={handleGoogleSignOut}>Log Out</button>
-                </div> : <button className="button" onClick={handleGoogleSignIn}>Google Login</button>
+                user ? 
+                <h3 id='redirect'>You&apos;re logged in! Redirecting to homepage!</h3> :
+                <div style={{display: 'flex', gap: "21px", justifyContent: 'center', alignItems: 'center', margin: "0 auto"}}>
+                    <button className="button login" onClick={() => handleSignIn(providerGoogle)}>Google Login</button>
+                    <button className="button login" onClick={() => handleSignIn(providerGitHub)}>GitHub Login</button>
+                </div>
             }
         </div>
     );
