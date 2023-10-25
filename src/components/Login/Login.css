@@ -1,0 +1,30 @@
+.button {
+    color: white;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 28px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all;
+    transition-duration: 175ms;
+    transition-timing-function: cubic-bezier(0,0,.2,1);
+    height: 3rem;
+    min-height: 3rem;
+    text-transform: capitalize;
+}
+
+.button:hover {
+    border-color: hsl(259 94% 51% / 1);
+    background-color: hsl(259 94% 51% / 1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.button:active {
+    font-size: 16px;
+}

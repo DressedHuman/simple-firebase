@@ -1,0 +1,19 @@
+a {
+    text-decoration: none;
+    transition: all;
+    transition-duration: 75ms;
+    border-bottom: 3px solid transparent;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+.active {
+    color: green;
+    border-bottom-color: black;
+}
+
+
+.pending {
+    color: #008000af;
+}
